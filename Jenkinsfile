@@ -2,28 +2,28 @@ pipeline {
     agent any
 
     environment {
-        FLUTTER_HOME = '/home/alnajoyk1/flutter'
-        PATH = "${FLUTTER_HOME}/bin:${PATH}"
+        FLUTTER_HOME = 'C:\\src\\flutter'
+        PATH = "${FLUTTER_HOME}\\bin;${PATH}"
     }
 
     stages {
 
         stage('Check Flutter') {
             steps {
-                sh 'which flutter'
-                sh 'flutter --version'
+                bat 'where flutter'
+                bat 'flutter --version'
             }
         }
 
         stage('Get Dependencies') {
             steps {
-                sh 'flutter pub get'
+                bat 'flutter pub get'
             }
         }
 
         stage('Build APK') {
             steps {
-                sh 'flutter build apk --release'
+                bat 'flutter build apk --release'
             }
         }
     }
